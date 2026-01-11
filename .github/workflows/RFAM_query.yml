@@ -13,7 +13,6 @@ jobs:
       MYSQL_HOST: mysql-rfam-public.ebi.ac.uk
       MYSQL_PORT: 4497
       MYSQL_USER: rfamro
-      MYSQL_PASSWORD: ""
       MYSQL_DATABASE: Rfam
     steps:
       - name: Checkout repository
@@ -24,8 +23,8 @@ jobs:
 
       - name: start query 1
         run: |
-          mysql --host=$MYSQL_HOST --port=$MYSQL_PORT --user=$MYSQL_USER --password="$MYSQL_PASSWORD" --database=$MYSQL_DATABASE < query1.sql
+          mysql --user=$MYSQL_USER --host=$MYSQL_HOST --port=$MYSQL_PORT --database=$MYSQL_DATABASE < query1.sql
 
       - name: start query 2
         run: |
-          mysql --host=$MYSQL_HOST --port=$MYSQL_PORT --user=$MYSQL_USER --password="$MYSQL_PASSWORD" --database=$MYSQL_DATABASE < query2.sql
+          mysql --user=$MYSQL_USER --host=$MYSQL_HOST --port=$MYSQL_PORT --database=$MYSQL_DATABASE < query2.sql
